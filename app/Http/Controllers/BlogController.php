@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
-use App\Http\Requests\UpdateBlogPost;
 
 class BlogController extends Controller
 {
@@ -26,14 +25,14 @@ class BlogController extends Controller
 
     public function show($id)
     {
-        $blog = Blog::find($id); $blog ?: abort(404);
-        return view('blog.single', ['blog' => $blog]);
+        $blog = Blog::find($id);
+        return $blog ? view('blog.single', ['blog' => $blog]) : abort(404);
     }
 
     public function edit($id)
     {
-        $blog = Blog::find($id); $blog ?: abort(404);
-        return view('blog.edit', ['blog' => $blog]);
+        $blog = Blog::find($id);
+        return $blog ? view('blog.edit', ['blog' => $blog]) : abort(404);
     }
 
     public function update(StoreBlogPost $request, $id)
