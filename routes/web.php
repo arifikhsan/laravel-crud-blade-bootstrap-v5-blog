@@ -22,3 +22,5 @@ Route::get('blog/{id}', 'BlogController@show');
 Route::get('blog/{id}/edit', 'BlogController@edit');
 Route::put('blog/{id}/update', 'BlogController@update');
 Route::get('blog/{id}/delete', 'BlogController@destroy');
+
+// Route::get('secretroom', 'BlogCon')

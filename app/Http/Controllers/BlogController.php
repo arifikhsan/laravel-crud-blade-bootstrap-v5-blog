@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreBlogPost;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        return view('blog.home', ['blogs' => Blog::all()]);
+        // $tables = array_map('current', DB::select('SHOW TABLES'));
+        // dd($tables[0]);
+        return view('blog.table', ['blogs' => Blog::orderBy('id', 'desc')->get()]);
     }
 
     public function create()
